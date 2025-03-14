@@ -37,3 +37,10 @@ THREAD : A thred is the smallest unit of execution within a process. A process c
         eg2: A webrowser like google chrome might use multiple thread for different tabs , with each tab runnning as a separate thread
 
 MULTITASKING : 
+
+
+How Java Handles Multithreading : 
+In single core env , Java Multithreading is managed by jvm and the OS , which switch b/w threads to give the illusion of concurrency . The thread share the single code , and time slicing is used to manage thread execution.
+In a multi-core env , Java Multithreading can take full advantage of the available cores. The JVM distribute threads across multiple cores, allowing true parallel execution of thread.
+
+Java supports multithreading through its java.lang.Thread class and java.lang.Runnable interface.

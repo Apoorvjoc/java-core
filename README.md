@@ -36,7 +36,7 @@ PROCESS : A process is an instance of a program, that is going to be excuted. Wh
 THREAD : A thred is the smallest unit of execution within a process. A process can have multiple threads, which share the same resource but can run independently , eg : inside ms-word spell checker can be haldled by one thread 
         eg2: A webrowser like google chrome might use multiple thread for different tabs , with each tab runnning as a separate thread
 
-MULTITASKING : 
+MULTITASKING :  TBC 
 
 
 How Java Handles Multithreading : 
@@ -44,3 +44,72 @@ In single core env , Java Multithreading is managed by jvm and the OS , which sw
 In a multi-core env , Java Multithreading can take full advantage of the available cores. The JVM distribute threads across multiple cores, allowing true parallel execution of thread.
 
 Java supports multithreading through its java.lang.Thread class and java.lang.Runnable interface.
+
+Thread Creation : 
+
+Steps For Thread creation while extending Thread class
+1) A new class should be created that extends Thread.
+2) The run method is overriden to define the code that constitues the new thread
+3) start method is called to intitate the new thread
+
+Main class : 
+
+public class ThreadClass {
+    public static void main(String[] args) {
+
+        // connecting with other thread or running other thread
+        World world = new World();
+        world.start();
+
+        for(int i = 0 ; i<10;i++){
+            System.out.println(Thread.currentThread().getName());
+        }
+    }
+}
+
+Thread method overriden
+
+public class World extends Thread{
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Thread.currentThread().getName());
+        }
+    }
+}
+
+Steps For Thread creation while implementing Runnable interface
+
+1) A new class should be created that implements Runnable.
+2) The run method is overriden to define the code that constitues the new thread
+3) Thread object is created by passing an instance of MyRunnable
+4) start method is called on the Thread object to intitate the new thread
+
+
+public class RunnableInterfaceMain {
+    public static void main(String[] args) {
+
+        //Starting thread from runnable
+        RunnableExample example = new RunnableExample();
+        Thread t1 = new Thread(example);
+        t1.start();
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Thread.currentThread().getName());
+        }
+    }
+}
+
+public class RunnableExample implements Runnable{
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println(Thread.currentThread().getName());
+        }
+    }
+}
+
+
+
+
+

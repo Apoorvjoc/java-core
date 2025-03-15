@@ -57,7 +57,7 @@ Main class :
 public class ThreadClass {
     public static void main(String[] args) {
 
-        // connecting with other thread or running other thread
+        //connecting with other thread or running other thread
         World world = new World();
         world.start();
 
